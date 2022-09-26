@@ -1,0 +1,41 @@
+{
+  "name": "sll-towing-app",
+  "version": "1.0.0",
+  "description": "A generic app for alerting other users when your car is being towed. Built with NodeJS + Express + MongoDB",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sll-coding-experience/sll-towing-app"
+  },
+  "scripts": {
+    "start": "node ./server.js",
+    "start:dev": "nodemon ./server.js",
+    "test": "mocha"
+  },
+  "dependencies": {
+    "@onesignal/node-onesignal": "^1.0.0-beta4",
+    "aws-sdk": "^2.1201.0",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "date-fns": "^2.29.2",
+    "dotenv": "^16.0.1",
+    "email-validator": "^2.0.4",
+    "express": "^4.17.1",
+    "express-jwt": "^6.0.0",
+    "fs-extra": "^10.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^3.5.9",
+    "mongoose": "^5.9.21",
+    "multer": "^1.4.5-lts.1",
+    "node-cron": "^3.0.2",
+    "nodemailer": "^6.7.5",
+    "nodemon": "^2.0.19",
+    "password-validator": "^5.3.0",
+    "qrcode": "^1.5.1",
+    "rootpath": "^0.1.2"
+  },
+  "devDependencies": {
+    "mocha": "^10.0.0"
+  }
+}
