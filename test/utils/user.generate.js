@@ -6,11 +6,11 @@ async function create() {
   let user;
 
   const userPayload = {
-    email: "mocktest@gruout.com",
-    username: "mocktestGruout",
+    email: "mocktest@sll.com",
+    username: "mocktestSll",
     password: "111111",
     name: "mocktest",
-    lastName: "gruout",
+    lastName: "sll",
     phone: 1234567890,
     nationality: "Argentina",
     language: "Español",
@@ -39,11 +39,11 @@ async function createTwo() {
   let user1, user2;
 
   const userPayload1 = {
-    email: "mocktest@gruout.com",
-    username: "mocktestGruout",
+    email: "mocktest@sll.com",
+    username: "mocktestSll",
     password: "111111",
     name: "mocktest",
-    lastName: "gruout",
+    lastName: "sll",
     phone: 1234567890,
     nationality: "Argentina",
     language: "Español",
@@ -52,11 +52,11 @@ async function createTwo() {
   };
 
   const userPayload2 = {
-    email: "mocktest2@gruout.com",
-    username: "mocktestGruout2",
+    email: "mocktest2@sll.com",
+    username: "mocktestSll2",
     password: "111111",
     name: "mocktest2",
-    lastName: "gruout2",
+    lastName: "sll2",
     phone: 1234567892,
     nationality: "Argentina",
     language: "Español",

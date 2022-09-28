@@ -15,11 +15,11 @@ describe("User test suite", function () {
 
   it("# should register a user", async function () {
     const userPayload = {
-      email: "mocktest@gruout.com",
-      username: "mocktestGruout",
+      email: "mocktest@sll.com",
+      username: "mocktestSll",
       password: "111111",
       name: "mocktest",
-      lastName: "gruout",
+      lastName: "sll",
       phone: 1234567890,
       nationality: "Argentina",
       language: "Español",
