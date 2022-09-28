@@ -1,7 +1,7 @@
 {
   "name": "sll-towing-app",
   "version": "1.0.0",
-  "description": "A generic app for alerting other users when your car is being towed. Built with NodeJS + Express + MongoDB",
+  "description": "An app for alerting other users when your car is being towed. Built with NodeJS + Express + MongoDB",
   "license": "MIT",
   "repository": {
     "type": "git",

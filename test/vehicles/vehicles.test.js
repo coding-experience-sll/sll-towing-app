@@ -19,7 +19,7 @@ describe("Vehicles test suite", function () {
       model: "Ford Fiesta",
       plateNumber: "ABC 124",
       year: 2017,
-      color: "Blanco",
+      color: "White",
       vehiclePicture: "ford.jpg",
     };
 
@@ -80,7 +80,7 @@ describe("Vehicles test suite", function () {
   it("# should edit model and color", async function () {
     const editedFields = {
       model: "Ford Focus",
-      color: "Gris",
+      color: "Black",
     };
     const result = await vehicleService.editVehicle(
       user.token,

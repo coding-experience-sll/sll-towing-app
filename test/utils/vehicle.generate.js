@@ -7,10 +7,10 @@ async function create(user) {
 
   const vehiclePayload = {
     type: "Auto",
-    model: "ford fiesta",
+    model: "Ford Fiesta",
     plateNumber: "ABC 124",
     year: 2017,
-    color: "Blanco",
+    color: "White",
     vehiclePicture: "ford",
   };
 

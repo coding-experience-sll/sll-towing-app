@@ -136,17 +136,15 @@ async function create(userParam) {
     $or: [
       { email: userParam.email },
       { phone: userParam.phone },
-      { dni: userParam.dni },
     ],
   });
 
   if (existing) {
     let repeatedParam;
     if (existing.email == userParam.email) repeatedParam = "Email";
-    else if (existing.phone == userParam.phone) repeatedParam = "Telefono";
-    else repeatedParam = "DNI";
+    else repeatedParam = "Phone";
     return (error = {
-      message: `${repeatedParam} en uso`,
+      message: `${repeatedParam} in use.`,
       errorCode: "R002",
     });
   }
@@ -165,10 +163,10 @@ async function create(userParam) {
   const mailOptions = {
     from: SES_EMAIL,
     to: user.email,
-    subject: `GruOut: Verificación de cuenta`,
+    subject: `sll-towing-app: account verification`,
     token: user.verificationToken,
-    templateH1: `verificación`,
-    templateText: "verificar tu correo electrónico",
+    templateH1: `verification`,
+    templateText: "verify your email",
   };
 
   await user.save();
@@ -246,7 +244,7 @@ async function resendVerify({ emailParam }) {
 
   if (!user)
     return (error = {
-      message: `Usuario no encontrado`,
+      message: `User not found`,
       errorCode: "R004",
     });
 
@@ -257,17 +255,17 @@ async function resendVerify({ emailParam }) {
   const mailOptions = {
     from: SES_EMAIL,
     to: user.email,
-    subject: `GruOut: Verificación de cuenta (reenvío)`,
+    subject: `sll-towing-app: account verification (resent)`,
     token: user.verificationToken,
-    templateH1: `verificación`,
-    templateText: "verificar tu correo electrónico",
+    templateH1: `verification`,
+    templateText: "verify your email",
   };
 
   mail.send(mailOptions);
 
   await user.save();
 
-  return { message: "Email de verificación reenviado por mail" };
+  return { message: "Verification email resent." };
 }
 
 async function verifyEmail({ token }) {
@@ -280,7 +278,7 @@ async function verifyEmail({ token }) {
   if (jwtConstant) jwtDuration = `${jwtConstant.value}d`;
   else jwtDuration = "90d";
 
-  if (!user) throw "Usuario no encontrado / token invalido";
+  if (!user) throw "User not found/invalid token.";
 
   user.verified = true;
   user.verificationToken = undefined;
@@ -308,10 +306,10 @@ async function forgotPasswordRequest({ email }) {
   const mailOptions = {
     from: SES_EMAIL,
     to: user.email,
-    subject: `GruOut: Recuperación de contraseña`,
+    subject: `sll-towing-app: password recovery`,
     token: user.forgotPwToken,
-    templateH1: `recuperación de contraseña`,
-    templateText: "recuperar tu contraseña",
+    templateH1: `password recovery`,
+    templateText: "recover your password",
   };
 
   mail.send(mailOptions);
@@ -324,7 +322,7 @@ async function forgotPasswordTokenOnly(userParam) {
 
   const user = await db.User.findOne({ forgotPwToken: userParam.token });
 
-  if (!user) throw "Usuario no encontrado/token invalido";
+  if (!user) throw "User not found/invalid token";
 
   return;
 }
@@ -333,7 +331,7 @@ async function forgotPasswordUpdate(userParam) {
   //validation that it shouldnt be the previous pw
   const user = await db.User.findOne({ forgotPwToken: userParam.token });
 
-  if (!user) throw "Usuario no encontrado/token invalido";
+  if (!user) throw "User not found/invalid token";
 
   if (userParam.pw != userParam.confirmPw) throw "passwords do not match";
 

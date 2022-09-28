@@ -23,8 +23,8 @@ module.exports = {
 
 async function create(userParam, token) {
   //checks for invalid report types
-  if (!(userParam.type == "Acarreo" || userParam.type == "Robo"))
-    return `report type can only be 'Acarreo' or 'Robo', case sensitive.`;
+  if (!(userParam.type == "Towed" || userParam.type == "Stolen"))
+    return `report type can only be 'Towed' or 'Stolen', case sensitive.`;
 
   //finds the vehicle with the owner's data
   const vehicle = await Vehicle.findOne({ _id: userParam.vehicleId }).populate({
@@ -84,7 +84,7 @@ async function create(userParam, token) {
   if (receiverDevices.length > 0 && !populatedReport.receiver.doNotDisturb)
     await push.send(
       receiverDevices,
-      "Tienes un nuevo reporte!",
+      "You have a new report!",
       populatedReport._id
     );
 
@@ -209,7 +209,7 @@ async function getMyReports(token, page, limit) {
 
 async function changeStatus(id, statusCode, rejectReason) {
   if (statusCode < 0 || statusCode > 5 || isNaN(statusCode))
-    return "invalid status code. 0 = Pendiente, 1 = En Espera, 2 = Rechazado, 3 = Pago, 4 = Cancelado, 5 = Expirado";
+    return "invalid status code. 0 = Pending, 1 = Awaiting approval, 2 = Rejected, 3 = Paid, 4 = Cancelled, 5 = Expired";
 
   let status;
 
@@ -217,22 +217,22 @@ async function changeStatus(id, statusCode, rejectReason) {
 
   switch (Number(statusCode)) {
     case 0:
-      status = "Pendiente";
+      status = "Pending";
       break;
     case 1:
-      status = "En Espera";
+      status = "Awaiting approval";
       break;
     case 2:
-      status = "Rechazado";
+      status = "Rejected";
       break;
     case 3:
-      status = "Pago";
+      status = "Paid";
       break;
     case 4:
-      status = "Cancelado";
+      status = "Cancelled";
       break;
     case 5:
-      status = "Expirado";
+      status = "Expired";
       break;
   }
 
@@ -268,7 +268,7 @@ async function changeStatus(id, statusCode, rejectReason) {
     if (senderDevices.length > 0 && !report.receiver.doNotDisturb)
       await push.send(
         senderDevices,
-        "Un reporte que enviaste fue rechazado.",
+        "A report you sent was rejected.",
         report._id
       );
   } else if (statusCode == 2 && !rejectReason)
@@ -311,13 +311,13 @@ async function approvePayment(userId, id) {
     //when both users approved
     report.reportStatus = {
       code: 3,
-      label: "Pago",
+      label: "Paid",
     };
   } else if (report.approvals.length == 1) {
     //when only the receiver approved
     report.reportStatus = {
       code: 1,
-      label: "En Espera",
+      label: "Awaiting approval",
     };
 
     //sends a notification
@@ -333,7 +333,7 @@ async function approvePayment(userId, id) {
     if (notifiedUserDevices.length > 0 && !report.receiver.doNotDisturb)
       await push.send(
         notifiedUserDevices,
-        "Aprobaron el pago de uno de tus reportes!",
+        "One of your payments has been approved!",
         report._id
       );
   }

@@ -10,7 +10,6 @@ const schema = new Schema({
   phone: { type: Number, required: true, unique: true },
   nationality: { type: String, required: true },
   language: { type: String, required: true },
-  dni: { type: Number, required: true, unique: true },
   currency: { type: String, default: "ARS" },
   currencyAmount: { type: Number },
   doNotDisturb: { type: Boolean, default: false },

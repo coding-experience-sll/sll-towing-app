@@ -30,7 +30,7 @@ async function create(userParam, token, file) {
 
   if (existing)
     return (error = {
-      message: `El vehiculo con la patente ${userParam.plateNumber} ya está registrado`,
+      message: `The license number ${userParam.plateNumber} is already registered.`,
       errorCode: "R002",
     });
 

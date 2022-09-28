@@ -18,7 +18,7 @@ describe("Reports test suite", function () {
   it("# should create a new report", async function () {
     const reportPayload = {
       vehicleId: vehicle._id,
-      type: "Robo",
+      type: "Stolen",
       longitude: 1,
       latitude: 1,
     };

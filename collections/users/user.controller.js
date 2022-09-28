@@ -49,7 +49,7 @@ function authenticate(req, res, next) {
     .then((user) =>
       user
         ? res.json(user)
-        : res.status(400).json({ message: "Usuario o contraseña incorrectos" })
+        : res.status(400).json({ message: "Invalid username or password." })
     )
     .catch((err) => next(err));
 }
@@ -95,7 +95,7 @@ function editInfo(req, res, next) {
         : res
             .status(400)
             .json({
-              message: "No se pudo actualizar la información del perfil",
+              message: "Could not update profile info.",
             })
     )
     .catch((err) => next(err));
@@ -135,7 +135,7 @@ function verifyEmail(req, res, next) {
         ? res.json(user)
         : res
             .status(404)
-            .json({ message: "Usuario no encontrado/token invalido" })
+            .json({ message: "User not found/invalid token" })
     )
     .catch(next);
 }
@@ -145,7 +145,7 @@ function verifyEmail(req, res, next) {
 function forgotPasswordRequest(req, res, next) {
   userService
     .forgotPasswordRequest(req.body)
-    .then(() => res.json({ message: "Token de recuperación enviado por mail" }))
+    .then(() => res.json({ message: "Forgot password token sent via email." }))
     .catch(next);
 }
 
@@ -159,7 +159,7 @@ function forgotPasswordTokenOnly(req, res, next) {
 function forgotPasswordUpdate(req, res, next) {
   userService
     .forgotPasswordUpdate(req.body)
-    .then(() => res.json({ message: "La contraseña fue actualizada" }))
+    .then(() => res.json({ message: "Your password was updated." }))
     .catch(next);
 }
 
@@ -168,7 +168,7 @@ function forgotPasswordUpdate(req, res, next) {
 function changePassword(req, res, next) {
   userService
     .changePassword(req.headers.authorization.split(" ")[1], req.body)
-    .then(() => res.json({ message: "La contraseña fue actualizada" }))
+    .then(() => res.json({ message: "Your password was updated." }))
     .catch(next);
 }
 
@@ -224,7 +224,7 @@ function deleteUser(req, res, next) {
     .then((user) =>
       user
         ? res.status(200).json(user)
-        : res.status(400).json({ message: "Usuario eliminado" })
+        : res.status(400).json({ message: "User deleted." })
     )
     .catch((err) => next(err));
 }

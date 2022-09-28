@@ -27,7 +27,6 @@ const validateRegister = ({
   phone,
   nationality,
   language,
-  dni,
 }) => {
   // validate missing fields
 
@@ -40,12 +39,11 @@ const validateRegister = ({
       lastName &&
       phone &&
       nationality &&
-      language &&
-      dni
+      language
     )
   )
     return (error = {
-      message: "Faltan campos requeridos",
+      message: "Missing required fields.",
       errorCode: "R003",
     });
 
@@ -53,7 +51,7 @@ const validateRegister = ({
 
   if (!(typeof email === "string" && emailValidator.validate(email)))
     return (error = {
-      message: "Email invalido",
+      message: "Invalid email.",
       errorCode: "R001",
     });
 
@@ -61,7 +59,7 @@ const validateRegister = ({
 
   if (!(typeof password === "string" && passwordSchema.validate(password)))
     return (error = {
-      message: "Contraseña invalida, debe tener entre 4 y 16 caracteres.",
+      message: "Invalid password. Must have between 4 and 16 characters.",
       errorCode: "R001",
     });
 
@@ -75,7 +73,7 @@ const validateRegister = ({
     )
   )
     return (error = {
-      message: "Telefono invalido, debe tener 10 caracteres.",
+      message: "Invalid phone. Must have 10 characters.",
       errorCode: "R001",
     });
 
@@ -83,7 +81,7 @@ const validateRegister = ({
 
   if (!(typeof name === "string" && name.length > 2 && name.length < 50))
     return (error = {
-      message: "El nombre debe tener entre 2 y 50 caracteres",
+      message: "The name must have between 2 and 50 characters.",
       errorCode: "R001",
     });
 
@@ -97,7 +95,7 @@ const validateRegister = ({
     )
   )
     return (error = {
-      message: "El apellido debe tener entre 2 y 50 caracteres",
+      message: "The last name must have between 2 and 50 characters.",
       errorCode: "R001",
     });
 
@@ -114,21 +112,7 @@ const validateRegister = ({
   )
     return (error = {
       message:
-        "Usuario invalido, debe tener entre 6 y 20 caracteres (minúscula)",
-      errorCode: "R001",
-    });
-
-  // validate DNI
-
-  if (
-    !(
-      typeof dni === "number" &&
-      parseInt(dni) === dni &&
-      dni.toString().length === 8
-    )
-  )
-    return (error = {
-      message: "DNI invalido, debe tener 8 caracteres.",
+        "Invalid user, must have between 6 and 20 characters.",
       errorCode: "R001",
     });
 

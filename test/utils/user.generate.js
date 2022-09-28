@@ -14,7 +14,6 @@ async function create() {
     phone: 1234567890,
     nationality: "Argentina",
     language: "Español",
-    dni: 12345678,
     currency: "USDT",
     currencyAmount: 5,
   };
@@ -48,7 +47,6 @@ async function createTwo() {
     phone: 1234567890,
     nationality: "Argentina",
     language: "Español",
-    dni: 12345678,
     currency: "USDT",
     currencyAmount: 5,
   };
@@ -62,7 +60,6 @@ async function createTwo() {
     phone: 1234567892,
     nationality: "Argentina",
     language: "Español",
-    dni: 12345672,
     currency: "ARS",
     currencyAmount: 1000,
   };

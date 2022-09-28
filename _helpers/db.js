@@ -10,7 +10,7 @@ const mongoose = require("mongoose"),
   };
 
 mongoose.connect(
-  connectionString || "mongodb://localhost/gruout",
+  connectionString || "mongodb://localhost/sll-towing-app",
   connectionOptions
 );
 

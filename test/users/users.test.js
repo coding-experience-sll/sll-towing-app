@@ -23,7 +23,6 @@ describe("User test suite", function () {
       phone: 1234567890,
       nationality: "Argentina",
       language: "Español",
-      dni: 12345678,
       currency: "USDT",
       currencyAmount: 5,
       doNotDisturb: false,
@@ -37,7 +36,7 @@ describe("User test suite", function () {
     const result = await userService.resendVerify({ emailParam: user.email });
     const newToken = await userService.getById(user.id);
     user.verificationToken = newToken.verificationToken;
-    assert.equal(result, undefined, "Unable to resend verify code");
+    assert.equal(result.message, 'Verification email resent.', "Unable to resend verify code");
   });
   it("# should verify an existing user", async function () {
     const result = await userService.verifyEmail({
